@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import { userRoutes } from "./routes/usersRoute";
+import { siteRoutes } from "./routes/siteReqRoutes";
 
 const app = express();
 const port = 8000;
@@ -11,6 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/user", userRoutes);
+app.use("/site", siteRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello World! Welcome to Hyper Media");

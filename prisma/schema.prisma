@@ -9,7 +9,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -27,6 +27,24 @@ model user {
   created_by    Int
   updated_at    DateTime?
   updated_by    Int?
+}
+
+model site_requests {
+  id              Int          @id @default(autoincrement())
+  job_title       String
+  email           String
+  organization_id Int
+  organization    organization @relation(fields: [organization_id], references: [id])
+  country         String
+  industry        String
+  company_size    Int
+  created_at      DateTime     @default(now())
+}
+
+model organization {
+  id            Int             @id @default(autoincrement())
+  name          String
+  site_requests site_requests[]
 }
 
 enum Roles {

@@ -204,7 +204,6 @@ export class userController {
             active,
             first_name: {
               contains: name ? name.trim() : undefined,
-              mode: "insensitive",
             },
           },
         },
