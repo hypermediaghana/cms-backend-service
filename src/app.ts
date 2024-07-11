@@ -5,7 +5,7 @@ import { userRoutes } from "./routes/usersRoute";
 import { siteRoutes } from "./routes/siteReqRoutes";
 
 const app = express();
-const port = 8000;
+const port = 9999;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -18,6 +18,6 @@ app.get("/", (req, res) => {
   res.send("Hello World! Welcome to Hyper Media");
 });
 
-app.listen(8000, () => {
+app.listen(9999, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
 });
