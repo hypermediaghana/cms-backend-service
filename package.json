@@ -29,5 +29,8 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^9.0.2",
     "prisma": "^5.15.0"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   }
 }

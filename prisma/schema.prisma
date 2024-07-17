@@ -9,12 +9,12 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model user {
-  id            Int       @id @default(autoincrement())
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
   first_name    String
   last_name     String
   other_name    String?
@@ -24,16 +24,16 @@ model user {
   active        Boolean?  @default(true)
   role          Roles     @default(admin)
   created_at    DateTime  @default(now())
-  created_by    Int
+  created_by    String
   updated_at    DateTime?
-  updated_by    Int?
+  updated_by    String?
 }
 
 model site_requests {
-  id              Int          @id @default(autoincrement())
+  id              String       @id @default(auto()) @map("_id") @db.ObjectId
   job_title       String
   email           String
-  organization_id Int
+  organization_id String       @db.ObjectId
   organization    organization @relation(fields: [organization_id], references: [id])
   country         String
   industry        String
@@ -42,7 +42,7 @@ model site_requests {
 }
 
 model organization {
-  id            Int             @id @default(autoincrement())
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
   name          String
   site_requests site_requests[]
 }
