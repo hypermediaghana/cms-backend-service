@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm run migrate
+RUN npx prisma db push
 
 EXPOSE 9999
 
