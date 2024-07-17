@@ -3,9 +3,11 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import { userRoutes } from "./routes/usersRoute";
 import { siteRoutes } from "./routes/siteReqRoutes";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
-const port = 9999;
+const port = process.env.port;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -18,6 +20,6 @@ app.get("/", (req, res) => {
   res.send("Hello World! Welcome to Hyper Media");
 });
 
-app.listen(9999, () => {
-  return console.log(`Express is listening at http://localhost:${port}`);
+app.listen(Number(port), () => {
+  return console.log(`Express is listening at http://localhost:${port}}`);
 });

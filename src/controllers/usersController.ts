@@ -77,7 +77,7 @@ export class userController {
       } = req.body;
       const existingUser = await prisma.user.findFirst({
         where: {
-          id: Number(id),
+          id,
         },
       });
       if (!existingUser) {
@@ -85,7 +85,7 @@ export class userController {
       } else {
         const response = await prisma.user.update({
           where: {
-            id: Number(id),
+            id,
           },
           data: {
             first_name,
@@ -114,7 +114,7 @@ export class userController {
       const { id } = req.body;
       const existingUser = await prisma.user.findFirst({
         where: {
-          id: Number(id),
+          id,
         },
       });
       if (!existingUser) {
@@ -122,7 +122,7 @@ export class userController {
       } else {
         const response = await prisma.user.delete({
           where: {
-            id: Number(id),
+            id,
           },
           select: selectStatement,
         });

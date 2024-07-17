@@ -12,4 +12,4 @@ RUN npx prisma db push
 
 EXPOSE 9999
 
-CMD [ "npm", "run", "start" ]
+CMD [ "npm", "run", "dev" ]
